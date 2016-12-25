@@ -1,12 +1,18 @@
 #!/usr/bin/php
 <?PHP
-function ft_split($str)
+
+function echo_tab($tab)
 {
-	$str = trim($str);
-	while (strpos($str, "  ") != FALSE)
-		$str = str_replace("  ", " ", $str);
-	$tab = explode(" ", $str);
-	return $tab;
+	foreach($tab as $elem)
+		echo "$elem\n";
+}
+
+function is_else($str)
+{
+	if (ctype_alpha($str) | is_numeric($str))
+		return FALSE;
+	else
+		return TRUE;
 }
 
 if ($argc > 1) 
@@ -16,18 +22,14 @@ if ($argc > 1)
 	while (strpos($str, "  ") != FALSE)
 		$str = str_replace("  ", " ", $str);
 	$tab = explode(" ", $str);
-	echo "COUCOU";
-	//sort($tab, SORT_NUMERIC);
-	//sort($tab, SORT_STRING | SORT_FLAG_CASE);
-	usort($tab, "strcmp");
-	foreach($tab as $elem)
-		echo "$elem\n";
+	$alpha = array_filter($tab, "ctype_alpha");
+	$num = array_filter($tab, "is_numeric");
+	$else = array_filter($tab, "is_else");
+	sort($alpha, SORT_STRING | SORT_FLAG_CASE);
+	sort($num);
+	sort($else);
+	echo_tab($alpha);
+	echo_tab($num);
+	echo_tab($else);
 }
-
-function ($str1, $str2)
-{
-	$i = -1;
-	while ($str[++$i] && $str[$i])
-	{
-		if (strpos(
 ?>
