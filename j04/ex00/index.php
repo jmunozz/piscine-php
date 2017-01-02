@@ -1,6 +1,7 @@
 <?PHP
+session_name('PRIVATE');
 session_start();
-if (isset($_COOKIE['PHPSESSID']))
+if (isset($_COOKIE['PRIVATE']))
 {
 	if (!strcmp($_GET['submit'], "OK"))
 	{
@@ -12,15 +13,13 @@ if (isset($_COOKIE['PHPSESSID']))
 <html>
 <body>
 <form ...>
-Identifiant: <input type="text" name="login" value="
-<?PHP 
+Identifiant: <input type="text" name="login" value="<?PHP 
 if (isset($_SESSION['login']))
 	echo $_SESSION['login']; 
 ?>
 " />
 <br />
-Mot de passe: <input type="password" name="passwd" value="
-<?PHP 
+Mot de passe: <input type="password" name="passwd" value="<?PHP 
 if (isset($_SESSION['passwd']))
 	echo $_SESSION['passwd']; 
 ?>
