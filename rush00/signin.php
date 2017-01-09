@@ -27,15 +27,13 @@ session_start();
 		<?php }} ?>	
 	</div>
 	</br>
-	<div>
+	<div id='signin'>
 	<form method='post'>
-		<label for='signin_login'>login</label>
+		<p>identifiant</p>
 		<input type='text' name='login' value='login' id='signin_login'/>
-		</br>
-		<label for='signin_pwd'>password</label>
-		<input type='text' name='pwd' value='pwd' id='signin_pwd'/>
-		</br>
-		<input type='submit' value='OK'/>
+		<p>mot de passe</p>
+		<input type='password' name='pwd' value='pwd' id='signin_pwd'/>
+		<input type='submit' value="s'inscrire"'/>
 	</form>
 	</div>
 </html>

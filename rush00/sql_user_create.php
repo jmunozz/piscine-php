@@ -20,6 +20,7 @@ function is_already_user($login) {
 function create_new_user($login, $pwd) {
 	if (is_already_user($login))
 		return (0);
+	$users =NULL;
 	if (file_exists('users.txt'))
 		$users = unserialize(file_get_contents("users.txt"));
 	$users[] = array('login' => $login, 'passwd' => hash("whirlpool", $pwd));

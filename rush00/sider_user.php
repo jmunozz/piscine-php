@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+session_name('ECOM');
+session_start(); 
+echo $_SESSION['is_loggued_on'];?>
 <html>
 	<div class="user_info">
 		<br/>
@@ -8,15 +12,22 @@
 			</a>
 		</div>
 		<br/>
-		<p class='elem_side'>LOG IN</p>
+		<?php if (!$_SESSION['user_loggued_on']) {?>
+		<p class='elem_side'>Se connecter</p>
 		<form method='post'>
 			<input class='elem_side' type='text' name='login' value='login'/>
 			<input class='elem_side' type='password' name='passwd' value='passwd'/>
-			<input class='elem_side' type='submit' name='submit' value='OK' />
+			<input class='elem_side' type='submit' name='auth' value='connexion' />
 		</form>
 		<a href='signin.php'><p class='elem_side'>Je ne suis pas encore inscrit</p></a>
+		<?php } else { ?>
+		<p class='elem_side'>Connecte</p>
+		<form method='post'>
+		<input class='elem_side' type='submit' name='auth' value='deconnexion'/>
+		</form>
+		<?php } ?>
 	</div>
-	<br />	<hr class='elem_side' width='80%' /> <br />
+	<br /><hr class='elem_side' width='80%' /><br />
 	<div class="user_cart">
 		<p class='elem_side'>MON PANIER </p>
 		<div class='circle elem_side'>

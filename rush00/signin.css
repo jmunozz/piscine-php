@@ -21,4 +21,21 @@ body {
 #answer img:hover {
 	opacity:.5;
 }
-	
+
+#signin {
+	text-align:center;
+}
+#signin input {
+	display:block;
+	border-top:2px solid grey;
+	border-right:2px solid grey;
+	text-align:center;
+	width:100px;
+	margin:3px auto;
+}
+
+#signin p {
+	display:block;
+	padding:0;
+	margin:0;
+}

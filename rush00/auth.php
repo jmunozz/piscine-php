@@ -1,18 +1,14 @@
 <?php
-function	auth($login, $passwd)
+function	auth($login, $passwd, $bdd)
 {
-	if (file_exists("../ex01/save"))
-		$tab_users = unserialize(file_get_contents("../ex01/save"));
-	else
+	if (!($user_infos = get_user_infos($login, $bdd)))
 	{
-		echo "No users file found\n";
+		echo "User does not exist\n";
 		return FALSE;
 	}
-	foreach ($tab_users as $user)
-	{
-		if (!strcmp($user['login'], $login) && !strcmp($user['passwd'], hash("Whirlpool", $passwd)))
+	if (!strcmp($user_infos['passwd'], hash("Whirlpool", $passwd)))
 			return TRUE;
-	}
+	echo 'wrong password';
 	return FALSE;
 }
 ?>
