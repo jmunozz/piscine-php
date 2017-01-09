@@ -8,29 +8,35 @@ session_start();
 	<head>
 	<meta charset 'UTF-8'>
 	<title><?php echo get_title(); ?></title>
-	<link rel='stylesheet' href='ecom.css'>
+	<link rel='stylesheet' href='signin.css'>
 	</head>
 	<body>
-	<h6>INSCRIVEZ-VOUS</h6>
-	<hr width='80%' />
+	<div>
+		<h1>INSCRIVEZ-VOUS</h1>
+		<hr width='26%' />
+	</div>
 	</br>
-	<div><?php 
+	<div id ='answer'><?php 
 		if (isset($_POST['login']) && isset($_POST['pwd'])) {
 			if (!create_new_user($_POST['login'], $_POST['pwd'])){?>
-		<img width='400px' src='img/sad_face.png' alt='OH!Oh!'/>
+		<img src='img/sad_face.png' alt='OH!Oh!'/>
+		<p> Ce login n'est pas valide </p>
 		<?php } else {?>
-		<img width='400px' src='img/happy_face.png' alt='OH!Oh!'/>
+		<img src='img/happy_face.png' alt='OH!Oh!'/>
+		<p> Votre inscription a bien été enregistrée </p>
 		<?php }} ?>	
 	</div>
 	</br>
+	<div>
 	<form method='post'>
-		<label for='signin_login'>LOGIN</label>
+		<label for='signin_login'>login</label>
 		<input type='text' name='login' value='login' id='signin_login'/>
 		</br>
-		<label for='signin_pwd'>PASSWORD</label>
+		<label for='signin_pwd'>password</label>
 		<input type='text' name='pwd' value='pwd' id='signin_pwd'/>
 		</br>
 		<input type='submit' value='OK'/>
 	</form>
+	</div>
 </html>
 
