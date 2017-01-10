@@ -9,7 +9,4 @@ function ft_split($str)
 	sort ($tab, SORT_STRING);
 	return $tab;
 }
-
-$tab = ft_split($argv[1]);
-print_r($tab);
 ?>

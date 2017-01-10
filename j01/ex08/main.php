@@ -2,8 +2,8 @@
 <?php
 include 'ft_is_sort.php';
 unset($argv[0]);
+$argv = array_values($argv);
 print_r($argv);
-
 if (ft_is_sort($argv) == 1)
 	echo "Le tableau est trié\n";
 else

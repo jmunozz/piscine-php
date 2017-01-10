@@ -1,5 +1,5 @@
 #!/usr/bin/php
 <?PHP
-foreach($argv as $elem)
-	echo "$elem\n";
+for($i = 1; isset($argv[$i]); $i++)
+	echo $argv[$i]."\n";
 ?>

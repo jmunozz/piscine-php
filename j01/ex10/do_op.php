@@ -2,7 +2,7 @@
 <?php
 if ($argc != 4)
 {
-	echo "Vous avez entré ".--$argc." arguments. Entrez 3 arguments!";
+	echo "Incorrect Parameters\n";
 	return;
 }
 for ($i = 1; $i <= 3; $i++)

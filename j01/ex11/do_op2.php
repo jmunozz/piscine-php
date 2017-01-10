@@ -1,7 +1,10 @@
 #!/usr/bin/php 
 <?php
 if ($argc != 2)
+{
+	echo "Incorrect Parameters\n";
 	return;
+}
 $ops = str_split("+-*%/");
 $pos = 0;
 for ($i = 0; $i <= 4; $i++)
@@ -13,7 +16,10 @@ for ($i = 0; $i <= 4; $i++)
 	}
 }
 if (!$pos)
+{
+	echo "Syntax error\n";
 	return;
+}
 $op = $argv[1][$pos];
 $num1 = trim(substr($argv[1], 0, $pos));
 $num2 = trim(substr($argv[1], $pos + 1));

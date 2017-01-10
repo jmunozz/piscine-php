@@ -4,7 +4,7 @@
 function get_key_value($str)
 {
 	if (!($pos = strpos($str, ":")))
-		return (array($str, ""));
+		return (NULL);
 	else
 	{
 		$key = substr($str, 0, $pos);
@@ -13,13 +13,16 @@ function get_key_value($str)
 	}
 }
 
+if ($argc < 2)
+	return;
 for ($i = 2; $i < $argc; $i++)
 {
 	if ($argv[$i])
 	{
-		$tab = get_key_value($argv[$i]);
-		$fin[$tab[0]] = $tab[1];
+		if (($tab = get_key_value($argv[$i])))
+			$fin[$tab[0]] = $tab[1];
 	}
 }
-echo $fin[$argv[1]]."\n";
+if (isset($fin[$argv[1]]))
+	echo $fin[$argv[1]]."\n";
 ?>
