@@ -53,6 +53,39 @@ if (mysqli_query($bdd, $query) == FALSE)
 return (TRUE);
 }
 
+function	create_products($bdd, $name, $price, $cat, $des = NULL, $img = NULL)
+{
+if ($des)
+{
+	$des = ", '".$des."'";
+	$description = ', description';
+}
+if ($img)
+{
+	$image = ', image';
+	$img = ", '".$img."'";
+}
+$query = "INSERT INTO products (name, price, categories".$description.$image.")
+		VALUES ('".$name."', '".$price."', '".$cat."'".$des.$img.")";
+if (mysqli_query($bdd, $query) == FALSE)
+	return (FALSE);
+return (TRUE);
+}
+
+function		create_categorie($bdd, $name, $des = NULL) {
+if ($des)
+{
+	$des = ", '".$des."'";
+	$description = ', description';
+}
+$query = "INSERT INTO categories (name".$description.")
+		VALUES ('".$name."'".$des.")";
+if (mysqli_query($bdd, $query) == FALSE)
+	return (FALSE);
+return (TRUE);
+
+}
+
 function table_exists($table_name, $bdd) {
 
 $query = "SHOW TABLES LIKE '".$table_name."'";

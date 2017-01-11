@@ -25,12 +25,13 @@ echo "users table created\n";
 function	create_table_products($bdd) {
 
 $query = "CREATE TABLE products (
-		id int NOT NULL AUTO INCREMENT,
+		id int NOT NULL AUTO_INCREMENT,
 		name varchar(255) NOT NULL,
 	    description varchar(1000) DEFAULT NULL,
 		price int NOT NULL,
 		image varchar(255) DEFAULT NULL,
-		categories varchar(1000) NOT NULL
+		categories varchar(1000) NOT NULL,
+		PRIMARY KEY (id)
 		)";
 
 $r = mysqli_query($bdd, $query);
