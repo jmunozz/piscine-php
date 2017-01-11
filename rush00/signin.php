@@ -1,8 +1,9 @@
 <?php
 include 'get.php';
-include 'sql_user_create.php';
+include 'sql_functions.php';
 session_name('ECOM');
 session_start();
+$bdd = sql_connexion();
 ?>
 <html>
 	<head>
@@ -18,7 +19,7 @@ session_start();
 	</br>
 	<div id ='answer'><?php 
 		if (isset($_POST['login']) && isset($_POST['pwd'])) {
-			if (!create_new_user($_POST['login'], $_POST['pwd'])){?>
+			if (!create_user($_POST['login'], $_POST['pwd'], $bdd)){?>
 		<img src='img/sad_face.png' alt='OH!Oh!'/>
 		<p> Ce login n'est pas valide </p>
 		<?php } else {?>
