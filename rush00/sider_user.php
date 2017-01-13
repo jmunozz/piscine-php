@@ -25,7 +25,13 @@ echo $_SESSION['is_loggued_on'];?>
 		<form method='post'>
 		<input class='elem_side' type='submit' name='auth' value='deconnexion'/>
 		</form>
+		<?php
+		if (is_admin($_SESSION["user_loggued_on"], $bdd)) {
+		?>
+			<a href="/admin"><p class='elem_side'>Administration du site</p></a>
 		<?php } ?>
+		<?php
+		} ?>
 	</div>
 	<br /><hr class='elem_side' width='80%' /><br />
 	<div class="user_cart">

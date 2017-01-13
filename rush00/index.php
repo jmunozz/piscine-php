@@ -3,8 +3,8 @@ session_name('ECOM');
 session_start();
 
 require_once('get.php');
-require_once('auth.php');
-require_once('sql_functions.php');
+require_once('functions/auth.php');
+require_once('functions/sql_functions.php');
 $bdd = sql_connexion();
 
 if (isset($_SESSION) && isset($_POST) && isset($_POST['auth']) &&

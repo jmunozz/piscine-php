@@ -1,5 +1,4 @@
 <?php
-require_once 'retreive.php';
 ?>
 <html>
 	<head>

@@ -1,5 +1,4 @@
 <?php
-
 function	retreive_add($bdd, $type)
 {
 	if ($type == 'product')
@@ -9,10 +8,13 @@ function	retreive_add($bdd, $type)
 				return (FALSE);
 		else
 		{
-			
-			if (!set_product($bdd, $_POST['name'], $_POST['prix'],
-			$_POST['categorie'], $_POST['des'], $_POST['img']))
+			if (get_id($bdd, 'products', 'name', $_POST['name']))
+				return( FALSE);
+			$img_name = !img_check_errors($_FILES['img']) ? img_rename($_FILES['img']) : NULL;
+			if (!set_product($bdd, $_POST['name'], $_POST['prix'], $_POST['categorie'], 
+				$_POST['des'], $img_name))
 				return (FALSE);
+			img_upload($_FILES['img'], $img_name);
 			return (TRUE);
 		}
 	}
@@ -22,6 +24,8 @@ function	retreive_add($bdd, $type)
 				return (FALSE);
 		else
 		{
+			if (get_id($bdd, 'categories', 'name', $_POST['name']))
+				return (FALSE);
 			if (!set_categorie($bdd, $_POST['name'], $_POST['des']))
 				return (FALSE);
 			return (TRUE);
@@ -41,16 +45,21 @@ function	retreive_add($bdd, $type)
 }
 
 function	retreive_del($bdd, $type) {
-
+echo "sdsdf";
 	if ($type == 'product')
 	{
 		if (!isset($_POST['name']))
 				return (FALSE);
 		else
 		{
-			
+			$id = get_id($bdd, 'products', 'name', $_POST['name']);
+			$res = get_elem_infos($bdd, 'products', $id);
+			$infos = mysqli_fetch_assoc($res);
+			print_r($infos);
 			if (!delete_elem($bdd, 'products', $_POST['name']))
 				return (FALSE);
+			echo "infos image === ".$infos['image'];
+			img_delete($infos['image']);
 			return (TRUE);
 		}
 	}

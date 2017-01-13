@@ -2,7 +2,7 @@
 if ($_GET['type'] == 'product') {
 ?>
 	
-	<form method='post' action='?action=add&type=product' >
+	<form method='post' action='?action=add&type=product' enctype='multipart/form-data'>
 		<p>NOM du produit</p>
 		<input type='text' name='name'/>
 		<p>Catégorie associée</p>
@@ -18,7 +18,7 @@ if ($_GET['type'] == 'product') {
 		<p>Prix<p/>
 		<input type ='text' name='prix'/>
 		<p>Image<p/>
-		<input type ='text' name='img' />
+		<input type ='file' name='img' />
 		<p>Description<p/>
 		<input type ='text' name='des'/>
 		<br/>

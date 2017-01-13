@@ -1,6 +1,6 @@
 <?php
 include 'get.php';
-include 'sql_functions.php';
+include 'functions/sql_functions.php';
 session_name('ECOM');
 session_start();
 $bdd = sql_connexion();

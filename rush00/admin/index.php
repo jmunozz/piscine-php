@@ -1,8 +1,9 @@
 <?php
 session_name('ECOM');
 session_start();
-require_once 'admin.php';
-require_once '../sql_functions.php';
+require_once '../functions/sql_functions.php';
+require_once '../functions/file.php';
+require_once 'retreive.php';
 
 $bdd = sql_connexion();
 

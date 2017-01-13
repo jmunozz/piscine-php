@@ -1,45 +1,66 @@
 <?php
-function	display_id_product($bdd, $display_id) {
 
-	if (($return = get_elem_infos($bdd, $display_id['table'], $display_id['id'])) == FALSE)
+/*
+** Affiche le produit/catégorie/user en fonction de l'id et de la table.
+** Prend la cle de connexion à la BDD et un array( 'table' => X, 'id' => X).
+*/
+
+function	display_by_id($bdd, $display_id) {
+
+	if  (!$display_id)
+		return FALSE;
+	$return = get_elem_infos($bdd, $display_id['table'], $display_id['id']);
+	if ($return === FALSE)
 		return (FALSE);
-	$r = mysqli_fetch_assoc($return); ?>
+	$r = mysqli_fetch_assoc($return);
+	if ($r  === FALSE)
+	{
+		if ($display_id['table'] === "products")
+				echo "Ce produits n'existe pas";
+		if ($display_id['table'] === "categories")
+				echo "Cette catégorie n'exsite pas";
+		if ($display_id['table'] === "users")
+				echo "Cet utilisateur n'existe pas";
+		return (FALSE); 
+	}
+	if ($display_id['table'] == 'products')
+	{
+?>
 		<p>Nom du produit : <?php echo $r['name']; ?></p>
 		<p>Prix : <?php echo $r['price']; ?></p>
 		<p>Categorie : <?php echo $r['categories']; ?></p>
 		<p>Description : <?php echo $r['des']; ?></p>
 		<p>Image : <?php echo $r['img']; ?></p>
-		<?php 
-		return (TRUE);
+<?php
+	}
+	if ($display_id['table'] == 'categories')
+	{
+?>
+		<p>Nom de la catégorie : <?php echo $r['name']; ?></p>
+		<p>Description : <?php echo $r['des']; ?></p>
+<?php
+}
+	if ($display_id['table'] == 'users')
+	{
+?>
+		<p>Nom du user : <?php echo $r['login']; ?></p>
+		<p>Mot de passe : <?php echo $r['passwd']; ?></p>
+		<p>Status : <?php echo $r['status']; ?></p>
+<?php 
+}
+	return (TRUE);
 }
 ?>
 
 <?php
-function	display_id_categorie($bdd, $display_id) {
-
-	if (($return = get_elem_infos($bdd, $display_id['table'], $display_id['id'])) == FALSE)
-		return (FALSE);
-	$r = mysqli_fetch_assoc($return); 
-	?>
-		<p>Nom de la catégorie : <?php echo $r['name']; ?></p>
-		<p>Description : <?php echo $r['des']; ?></p>
-		<?php 
-		return (TRUE);
-}
-?>
-
-<?php		
-function	display_id_user($bdd, $display_id) {
-
-	if(($return = get_elem_infos($bdd, $display_id['table'], $display_id['id'])) == FALSE)
-		return (FALSE);
-	$r = mysqli_fetch_assoc($return); 
-	?>
-		<p>Nom du user : <?php echo $r['login']; ?></p>
-		<p>Mot de passe : <?php echo $r['passwd']; ?></p>
-		<p>Status : <?php echo $r['status']; ?></p>
-		<?php  
-		return (TRUE);
+function	display_all($bdd, $table, $field = NULL, $value = NULL)
+{
+	if (!$field || !$value)
+		$result = get_table_field($bdd, $table, 'id');
+	else
+		$result = get_ids_constraint($bdd, $table, $field, $value);
+	while (($id = mysqli_fetch_array($result)))
+		display_by_id($bdd, array( 'table' => $table , 'id' => $id['id']));
 }
 ?>
 
@@ -115,35 +136,6 @@ function	display_id_user_mod($bdd, $display_id) {
 ?>
 
 <?php
-function	display_id($bdd, $display_id) {
-	if (isset($display_id))
-	{
-		if ($display_id['table'] == 'products')
-		{
-			if (display_id_product($bdd, $display_id) == FALSE)
-			{
-				echo "Ce produit n'existe pas.";
-				return (FALSE);
-			}
-		}
-		if ($display_id['table'] == 'categories')
-		{
-			if (display_id_categorie($bdd, $display_id) == FALSE)
-			{
-				echo "Cette catégorie n'existe pas";
-				return (FALSE);
-			}
-		}
-		if ($display_id['table'] == 'users')
-		{
-			if (display_id_user($bdd, $display_id) == FALSE)
-			{
-				echo "Cet utilisateur n'existe pas";
-				return (FALSE);
-			}
-		}
-	}
-}
 
 function	display_id_mod($bdd, $display_id) {
 	if (isset($display_id))
