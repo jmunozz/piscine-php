@@ -32,6 +32,14 @@ function		drop_from_cart($id) {
 		}
 }
 
+function		drop_cart($id) {
+	if ($_SESSION['cart']) {
+		$_SESSION['cart'] = array();
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
 function		get_cart_amount($cart) {
 	$total = 0;
 	foreach($cart as $product) {

@@ -1,5 +1,9 @@
 <?php
-	if (array_key_exists('categories', $_GET))
+	if (array_key_exists('home', $_GET))
+	{
+		include ("frames/user_cart.php");
+	}
+	else if (array_key_exists('categories', $_GET))
 	{
 		display_all($bdd, 'products', 'categories', $_GET['categories']);
 	}
