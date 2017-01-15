@@ -28,7 +28,8 @@ function	display_by_id($bdd, $display_id) {
 	if ($display_id['table'] == 'categories')
 	{
 ?>
-		<p>Nom de la catégorie : <?php echo $r['name']; ?></p>
+		<a href="?catgeories=<?php echo $display_id['table']; ?>"><p>Nom de la catégorie : <?php echo $r['name']; ?></p><a>
+
 		<p>Description : <?php echo $r['des']; ?></p>
 <?php
 }

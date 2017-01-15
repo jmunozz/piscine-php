@@ -20,6 +20,7 @@ function	retreive_add($bdd, $type)
 	}
 	if ($type == 'categorie')
 	{
+		echo "POPO";
 		if (!isset($_POST['name']))
 				return (FALSE);
 		else
@@ -45,7 +46,6 @@ function	retreive_add($bdd, $type)
 }
 
 function	retreive_del($bdd, $type) {
-echo "sdsdf";
 	if ($type == 'product')
 	{
 		if (!isset($_POST['name']))

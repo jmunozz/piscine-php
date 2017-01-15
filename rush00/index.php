@@ -1,13 +1,14 @@
 <?php
 session_name('ECOM');
 session_start();
-require_once('get.php');
-require_once('functions/auth.php');
+require_once('functions/auth_functions.php');
 require_once('functions/sql_functions.php');
 require_once('functions/display_functions.php');
 require_once('functions/user_functions.php');
-$bdd = sql_connexion();
+require_once('functions/generate_db.php');
 
+	if (NULL === ($bdd = sql_connexion()))
+		generate_db();
 	if (!$_SESSION['cart']) {
 	$_SESSION['cart'] = array();
 	}
@@ -30,6 +31,7 @@ $bdd = sql_connexion();
 	{
 		echo 'on se deconnecte';
 		$_SESSION['user_loggued_on'] = "";
+		drop_cart();
 	}
 	if ($_POST['cart_buy'] || $_POST['cart_modify'])
 		add_to_cart($_POST['cart_id'], $_POST['cart_quantity'], $_POST['cart_price']);
@@ -39,7 +41,7 @@ $bdd = sql_connexion();
 	if (isset($_SESSION))
 	{
 		include ("functions/init.php");
-		include ("homepage.php");
+		include ("home/homepage.php");
 	}
 
 ?>

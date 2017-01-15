@@ -1,13 +1,4 @@
 <?php
-?>
-<html>
-	<head>
-		<meta charset 'UTF-8'>
-		<title>admin</title>
-		<link rel='stylesheet' href='backend.css'>
-	</head>
-	<body>
-<?php
 			if ($_GET['action'] == 'add')
 			{
 				if (isset($_POST['submit']) && $_POST['submit'] == 'ok')
@@ -35,5 +26,3 @@
 			if ($_GET['action'] == 'mod')
 				include 'modify_forms.php';
 ?>
-	</body>
-</html>

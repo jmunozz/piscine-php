@@ -1,5 +1,4 @@
 <?php
-require_once('generate_db.php');
 
 function	serversql_connexion() {
 
@@ -26,8 +25,8 @@ function sql_connexion() {
 	if ($bdd->connect_error)
 	{
 		echo "try to connect again";
-		generate_db();
 		echo "PLEASE REFRESH THE PAGE\n";
+		return (NULL);
 	}
 	return ($bdd);	
 }
@@ -105,7 +104,7 @@ function	set_product($bdd, $name, $price, $cat, $des = NULL, $img = NULL, $id = 
 }
 
 function		set_categorie($bdd, $name, $des = NULL, $id = NULL) {
-if ($id)
+if (!$id)
 {
 	$des = ($des) ? ", '".$des."'" : NULL;
 	$description = ($des) ? ", description" : NULL;

@@ -13,24 +13,18 @@ echo $_SESSION['is_loggued_on'];?>
 		</div>
 		<br/>
 		<?php if (!$_SESSION['user_loggued_on']) {?>
-
+		<p class='elem_side'>Se connecter</p>
 		<form method='post'>
-			<p class='elem_side'>Se connecter</p>
 			<input class='elem_side' type='text' name='login' value='login'/>
 			<input class='elem_side' type='password' name='passwd' value='passwd'/>
-			<input id="bouton" class='elem_side' type='submit' name='auth' value='connexion' />
-			<a href='signin.php'><p class='elem_side'>Je ne suis pas encore inscrit</p></a>
+			<input class='elem_side' type='submit' name='auth' value='connexion' />
 		</form>
+		<a href='signin.php'><p class='elem_side'>Je ne suis pas encore inscrit</p></a>
 		<?php } else { ?>
 		<p class='elem_side'>Connecte</p>
 		<form method='post'>
 		<input class='elem_side' type='submit' name='auth' value='deconnexion'/>
 		</form>
-		<?php
-		if (is_admin($_SESSION["user_loggued_on"], $bdd)) {
-		?>
-			<a href="/admin"><p class='elem_side'>Administration du site</p></a>
-		<?php } ?>
 		<?php
 		} ?>
 	</div>
@@ -46,7 +40,7 @@ echo $_SESSION['is_loggued_on'];?>
 		<p class='elem_side'><?php echo CART_AMOUNT; ?> EUROS</p>
 		<br />
 		<form action='end_shopping.php'>
-			<input id="bouton" class='elem_side' type='submit'
+			<input class='elem_side' type='submit'
 			value='FINIR SHOPPING' >
 		</form>
 	</div>

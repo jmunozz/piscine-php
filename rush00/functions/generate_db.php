@@ -1,8 +1,5 @@
 <?php
 
-require_once 'sql_functions.php';
-
-
 function	create_database($db_name, $sql) {
 
 $query = "CREATE DATABASE ".$db_name;

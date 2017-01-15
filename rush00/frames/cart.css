@@ -1,0 +1,11 @@
+.single  p {
+	display:inline-block;
+}
+
+.single input {
+	display:inline-block;
+}
+
+.single input[type=number] {
+	width:20px;
+}

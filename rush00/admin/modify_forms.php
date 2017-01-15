@@ -1,5 +1,4 @@
 <?php
-include '../functions/display_functions.php';
 if (isset($_POST['submit']) && $_POST['submit'] == 'find')
 {
 	$fd = retreive_find();

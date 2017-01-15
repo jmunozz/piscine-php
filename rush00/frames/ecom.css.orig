@@ -1,3 +1,6 @@
+body {
+	background-color:grey;
+}
 
 #user {
 	width:70px;
@@ -27,11 +30,12 @@
 	margin-left:auto;
 }
 .sider_user{
-	background-color:#282929;
-	border-radius: 15px;
+	background-color:pink;
 	display:inline-block;
 	width:20%;
 	vertical-align:top;
+<<<<<<< HEAD
+=======
 	color: #E5E5E5;
 }
 
@@ -66,12 +70,16 @@
 
 .sider_user a:hover
 {
+<<<<<<< HEAD
+	color: #4FC2B3;
+=======
 	color: #5D827D;
+>>>>>>> 3325562408a13bdc5f91aeebc6ff7a19f1400105
+>>>>>>> 023723af0a680f4549d1162f6bc94229f83a8d17
 }
 
 .center{
-	background-color:#282929;
-	border-radius: 15px;
+	background-color:green;
 	display:inline-block;
 	width:58%;
 	margin-left:5px;
