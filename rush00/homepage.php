@@ -3,7 +3,7 @@
 	<head>
 	<meta charset 'UTF-8'>
 	<title><?php echo get_title(); ?></title>
-	<link rel='stylesheet' href='ecom.css'>
+	<link rel='stylesheet' href='frames/ecom.css'>
 	<link rel='stylesheet' href='frames/product.css'>
 	</head>
 	<body>

@@ -42,7 +42,7 @@ echo $_SESSION['is_loggued_on'];?>
 			</a>
 		</div>
 		<br/>
-		<p class='elem_side'><?php echo get_cart_amount($_SESSION['cart_content']); ?> EUROS</p>
+		<p class='elem_side'><?php echo CART_AMOUNT; ?> EUROS</p>
 		<br />
 		<form action='end_shopping.php'>
 			<input class='elem_side' type='submit'
