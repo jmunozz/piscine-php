@@ -24,15 +24,7 @@ function	display_by_id($bdd, $display_id) {
 		return (FALSE); 
 	}
 	if ($display_id['table'] == 'products')
-	{
-?>
-		<p>Nom du produit : <?php echo $r['name']; ?></p>
-		<p>Prix : <?php echo $r['price']; ?></p>
-		<p>Categorie : <?php echo $r['categories']; ?></p>
-		<p>Description : <?php echo $r['des']; ?></p>
-		<p>Image : <?php echo $r['img']; ?></p>
-<?php
-	}
+		include ("frames/product_displays.php");
 	if ($display_id['table'] == 'categories')
 	{
 ?>

@@ -1,0 +1,17 @@
+.product {
+	background-color:yellow;
+	padding:3px;
+	border-width:1px;
+	border-color:black;
+	border-radius:5px;
+	float:left;
+	width:100px;
+	display:inline-block;
+
+}
+
+.name {
+	font-size:3pw;
+	font-family:Arial;
+	font-color:black;
+}

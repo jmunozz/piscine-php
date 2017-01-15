@@ -54,3 +54,18 @@ body {
 	height:600px;
 	vertical-align:top;
 }
+
+.product {
+	background-color:yellow;
+	padding:3px;
+	border-width:1px;
+	border-color:solid grey;
+	border-radius:5px;
+
+}
+
+.name {
+	font-size:3pw;
+	font-family:Arial;
+	font-color:black;
+}
