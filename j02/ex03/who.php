@@ -2,7 +2,7 @@
 <?PHP
 function my_sort($a, $b)
 {
-	return strcmp($a[line], $b[line]);
+	return strcmp($a['line'], $b['line']);
 }
 
 $resource = fopen("/var/run/utmpx", "r");
@@ -14,6 +14,6 @@ unset($tab[1]);
 date_default_timezone_set("Europe/Paris");
 foreach($tab as $elem)
 	if ($elem[type] == 7)
-		echo $elem[user]."  " . $elem[line] . "  " . date("M d h:i", $elem[time1]) . "\n";
+		echo $elem[user]."   " . $elem['line'] . "  " . date("M d H:i", $elem[time1]) . "\n";
 
 ?>

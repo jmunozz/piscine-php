@@ -1,4 +1,4 @@
 <?PHP
 header("Content-Type:text/plain");
 ?>
-	<html> Je suis ici </html>
+<html><body>Hello</body></html>

@@ -4,7 +4,10 @@ while (1)
 {
 	echo "Entrez un nombre: ";
 	if (($my_str = fgets(STDIN)) === FALSE)
-		break;
+	{
+		echo "\n";
+		exit;
+	}
 	$my_str = trim($my_str);
 	if (is_numeric($my_str) == TRUE)
 	{

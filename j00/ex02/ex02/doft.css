@@ -2,7 +2,7 @@ body {
 	background-color:#4F4F4F;
 }
 #shadow {
-	text-shadow:5px 5px 5px red;
+	text-shadow:5px -1px 5px red;
 }
 .elems {
 	margin:0 auto;
@@ -45,7 +45,7 @@ body {
 	display:block;
 	width:50px;
 	text-align:center;
-	margin:4px auto;
+	margin:0 auto;
 }
 #day {
 	width: 40%;
@@ -72,7 +72,7 @@ body {
 #brick {
 	background-image: url("resources/brick.jpg");
 	height:70px;
-	width:100%;
+	width:80%;
 }
 #eye {
 	border:3px solid red;
@@ -80,12 +80,8 @@ body {
 #box {
 	background-color:#87FE88;
 	position:absolute;
-	bottom:-75px;
+	bottom:-10px;
 	left:-10px;
-	font-family:Lucida Grande;
-	text-align:left;
-	height:130px;
-	width:450px;
 }
 #cluster1 {
 	position:absolute;
@@ -108,18 +104,7 @@ body {
 }
 #answer {
 	width:70%;
-	border-top: 2px solid grey;
-	border-left: 2px solid grey;
-}
-
-#subm {
-	background-color:#e7e7e7;
-	padding:2;
-	border-radius:3px;
-	border-bottom:2px solid grey;
-
 }
 #high {
 	font-size:28px;
-	font-family:'Time New Roman';
 }

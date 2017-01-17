@@ -29,10 +29,7 @@ if (!is_numeric($num1) || !is_numeric($num2))
 	return;
 }
 if (($op == "/" || $op == "%") && !intval($num2))
-{
-	echo "Beware divsion or modulo by zero !\n";
 	return;
-}
 switch ($op)
 {
 	case "+":
