@@ -1,4 +1,5 @@
 SELECT titre, resum
 FROM film
 WHERE resum
-LIKE "%vincent%";
+LIKE "%vincent%"
+ORDER BY id_film;
