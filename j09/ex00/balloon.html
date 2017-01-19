@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			#main {
+				height:200px;
+				width:200px;
+				background-color:red;
+				border-radius:50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id ="main" onclick="f()" onmouseout="g()"></div>
+		<script>
+		function f() {
+			var main = document.getElementById("main");
+			var width = main.offsetWidth;
+			var height = main.offsetHeight;
+			if (height > 420) {
+				main.style.width = '200px';
+				main.style.height = '200px';
+			}
+			else {
+				if (main.style.backgroundColor == "red" || !main.style.backgroundColor) {
+					main.style.backgroundColor = "green";
+				}
+				else if (main.style.backgroundColor == "green") {
+					main.style.backgroundColor = "blue"; 
+				}
+				else
+					main.style.backgroundColor = "red"; 
+				main.style.width = (width + 10)+"px";
+				main.style.height = (height + 10)+"px";
+			}
+		}
+
+		function g() {
+			var main = document.getElementById("main");
+			var width = main.offsetWidth;
+			var height = main.offsetHeight;
+			if (main.style.backgroundColor == "red" || !main.style.backgroundColor) {
+				main.style.backgroundColor = "blue";
+			}
+			else if (main.style.backgroundColor == "blue") {
+				main.style.backgroundColor = "green"; 
+			}
+			else
+				main.style.backgroundColor = "red";
+			if (height > 200) {
+				main.style.width = (width - 5)+"px";
+				main.style.height = (height - 5)+"px";
+			}
+		}
+
+		</script>
+	</body>
+</html>

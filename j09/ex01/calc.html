@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			#calc {
+				height:200px;
+				width:200px;
+				background-color:blue;
+				border-radius:20%;
+				padding:20px;
+				text-align:center;
+			}
+
+			#calc input, select {
+				display:block;
+				margin-left:auto;
+				margin-right:auto;
+				margin-top:2px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="calc">
+			<input id="nb1" type="text" value="1" />
+			<select id="op">
+				<option value="+">+</option>
+				<option value="-">-</option>
+				<option value="*">*</option>
+				<option value="/">/</option>
+				<option value="%">%</option>
+			</select>
+			<input id="nb2" type="text" value="1" />
+			<input type="submit" value="Try me!" onclick="f()"/>
+		</div>
+		<script>
+			function f() {
+				var op = document.getElementById("op");
+				console.log(document.getElementById("nb1"));
+				console.log(parseInt(document.getElementById("nb1")));
+				if (parseInt(document.getElementById("nb1")) < 0 || parseInt(document.getElementById("nb2")) < 0) {
+					console.log("Error :(");
+					exit();
+				}
+				else if (op.value == "+") {
+					var res = add(document.getElementById("nb1"), document.getElementById("nb2"));
+				}
+				else if (op.value == "-") {
+					var res = deduct(document.getElementById("nb1"), document.getElementById("nb2"));
+				}
+				else if (op.value == "*") {
+					var res = multiply(document.getElementById("nb1"), document.getElementById("nb2"));
+				}
+				else if (op.value == "/") {
+					var res = divide(document.getElementById("nb1"), document.getElementById("nb2"));
+					if (res === NULL) {
+						console.log("It's over 9000!");
+						exit();
+					}
+				}
+				else if (op.value == "%") {
+					var res = modulo(document.getElementById("nb1"), document.getElementById("nb2"));
+					if (res === NULL) {
+						console.log("It's over 9000!");
+						exit();
+					}
+
+				}
+				console.log(res);
+				alert(res);
+			}
+
+			function add(nb1, nb2) {
+				return (parseInt(nb1.value) + parseInt(nb2.value));
+			}
+
+			function deduct(nb1, nb2) {
+				return (parseInt(nb1.value) - parseInt(nb2.value));
+			}
+
+			function multiply(nb1, nb2) {
+				return (parseInt(nb1.value) * parseInt(nb2.value));
+			}
+
+			function divide(nb1, nb2) {
+				if (parseInt(nb2))
+					return (NULL);
+				return (parseInt(nb1.value) / parseInt(nb2.value));
+			}
+
+			function modulo(nb1, nb2) {
+				if (parseInt(nb2))
+					return (NULL);
+				return (parseInt(nb1.value) % parseInt(nb2.value));
+			}
+		</script>
+	</body>
+</html>
