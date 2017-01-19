@@ -18,7 +18,7 @@ switch($argv[2]) {
 		echo (intval($argv[1]) + intval($argv[3]))."\n";
 		break;
 	case "-":
-		echo (intval($argv[1]) - intval($argv[3]))."merde"."\n";
+		echo (intval($argv[1]) - intval($argv[3]))."\n";
 		break;
 	case "/":
 		echo (intval($argv[1]) / intval($argv[3]))."\n";

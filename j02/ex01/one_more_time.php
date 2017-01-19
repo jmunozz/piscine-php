@@ -10,7 +10,7 @@ if (count($elem) != 5 || !preg_match("/^([Ll]undi|[Mm]ardi|[Mm]ercredi|[Jj]eudi|
 	!preg_match("/^[0-9]{4}$/", $elem[3]) ||
 	!preg_match("/^([0-9]{2}:){2}[0-9]{2}$/", $elem[4]))
 {
-	echo "Wrong Format !\n";
+	echo "Wrong Format\n";
 	return;
 }
 $tab_hour = explode(":", $elem[4]);

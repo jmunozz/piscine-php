@@ -1,15 +1,16 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
+		<title>Day of the 42</title>
 		<link rel="stylesheet" type="text/css" href="doft.css">
 	</head>
 	<body>
 		<div class="elems">
 			<div class="top container">
-				<img id="day" src="resources/day_of_the_42.png" />
-				<img id="loupe" src="resources/loupe.png" />
-				<a href="http://www.disney.com"><img class="buttons" id="reload" src="resources/reload.png" title="Recommencer au début" /></a>
-				<a href="http://www.relaischateaux.com"><img class="button" id="close" src="resources/close.gif" title="Déconnecter" /></a>
+				<img id="day" src="resources/day_of_the_42.png" alt="42">
+				<img id="loupe" src="resources/loupe.png" alt="loupe"/>
+				<a href="http://www.disney.com"><img class="buttons" id="reload" src="resources/reload.png" title="Recommencer au début" alt="reload"/></a>
+				<a href="http://www.relaischateaux.com"><img class="button" id="close" src="resources/close.gif" title="Déconnecter" alt="deconnecter"/></a>
 			</div>
 			<div class="down">
 				<div class="side container">
@@ -20,20 +21,20 @@
 					<img class="img_side" src="resources/chat-icon.png" title="Parler" alt="Parler" />
 				</div>
 				<div class="center container">
-					<a title="Acheter" href="http://www.ikea.com" id="cluster2"></a>
-					<a title="Voyage Voyage" href="http://www.apple.com" id="cluster1"></a>
-					<img src="resources/cluster.jpg" />
+					<a title="Acheter" href="http://www.apple.com" id="cluster2"></a>
+					<a title="Voyage Voyage" href="http://www.ikea.com" id="cluster1"></a>
+					<img src="resources/cluster.jpg" name="cluster" alt="cluster" />
 				</div>
 				<div class="side container">
 					<img class="img_side" src="resources/book.png" title="read" alt="read" />
 					<img class="img_side" src="resources/towel.png" title="wash" alt="wash"/>
-					<div class="img_side" id=brick title="Maroufler" alt="Maroufler">
+					<div class="img_side" id=brick title="Maroufler">
 				</div>
 				<div id=box class="container">
-					Vous <span id="high">entrez</span> dans une grande piece remplie <br />
-					<span id="shadow">d'ordinateurs</span>...<br />
-					<i>-Bonjour, vous êtes nouveau ici ?</i> <br />
-					<input id="answer" type="text"  name="formulaire"><input type="submit" value="Répondre">
+					Vous <span id="high">entrez</span> alors dans une grande piece remplie <br />
+					d'<span id="shadow">ordinateurs</span>...<br />
+					<i>- Bonjour, vous êtes nouveau ici ?</i> <br />
+					<input id="answer" type="text"  name="formulaire"> <input id="subm" type="submit" value="Repondre">
 				</div>
 			</div>
 		</div>
