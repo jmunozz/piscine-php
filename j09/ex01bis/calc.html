@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			#calc {
+				height:200px;
+				width:200px;
+				background-color:blue;
+				border-radius:20%;
+				padding:20px;
+				text-align:center;
+			}
+
+			#calc input, select {
+				display:block;
+				margin-left:auto;
+				margin-right:auto;
+				margin-top:2px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="calc">
+			<input name="nb1" type="text" value="1" />
+			<select id="op">
+				<option value="+">+</option>
+				<option value="-">-</option>
+				<option value="*">*</option>
+				<option value="/">/</option>
+				<option value="%">%</option>
+			</select>
+			<input name="nb2" type="text" value="1" />
+			<input type="submit" value="Try me!"/>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+		<script>
+		$('input[type=submit]').click(function() {
+
+		var op = $('select').val();
+		var nb1 = parseInt($('input[name=nb1]').val());
+		var nb2 = parseInt($('input[name=nb2]').val());
+		var res;
+		if (isNaN(nb1) || isNaN(nb2) || nb1 < 0 || nb2 < 0) {
+			console.log("Error :(");
+			return;
+		}
+		if ((op == '/' || op == '%') && !nb2) {
+			console.log("It's over 9000!");
+			return;
+		}	
+		switch (op) {
+			case '+':
+				res = nb1 + nb2;
+				break;
+			case '-':
+				res = nb1 - nb2;
+				break;
+			case '*':
+				res = nb1 * nb2;
+				break;
+			case '/':
+				res = nb1 / nb2;
+				break;
+			case '%':
+				res = nb1 % nb2;
+				break;
+		}
+		console.log(res);
+		alert(res);
+		});
+		</script>
+	</body>
+</html>
