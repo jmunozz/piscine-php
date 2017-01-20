@@ -41,7 +41,8 @@ function	recover_todo() {
 }
 
 function	create_todo(id, content) {
-		console.log(content);
+		console.log("CREATE_CONTENT= "+content);
+		console.log("CREATE_ID= "+id);
 		content = document.createTextNode(content);
 		var todo = document.createElement("div");
 		todo.className = "todo";
@@ -49,27 +50,28 @@ function	create_todo(id, content) {
 		todo.appendChild(content);
 		todo.onclick = function() {
 			if (confirm("Etes-vous sûr ?") == true) {
+				k = this.id;
 				this.parentNode.removeChild(this);
-				document.cookie = id+"="+content+kill;
+				document.cookie = k+"=''"+kill;
 				cookie_nb--;
-				console.log(cookie_nb);
+				console.log("DELETE_COOKIE_NB= "+cookie_nb);
 				document.cookie = "cookie_nb="+cookie_nb;
+				console.log("DELETE_COOKIE_STRING= "+document.cookie);
 			}
 		};
 		return (todo);
 }
 
 function	insert_todo(todo) {
-		cookie_string = document.cookie;
 		if (ft_list.childElementCount === 0) {
 			ft_list.appendChild(todo);
 			document.cookie = todo.id+"="+todo.textContent+expires;
-			console.log("COOK"+cookie_string);
+			console.log("INSERT_COOKIE_STRING= "+document.cookie);
 		}
 		else {
 			ft_list.insertBefore(todo, ft_list.firstChild);
 			document.cookie = todo.id+"="+todo.textContent+expires;
-			console.log("COOK"+cookie_string);
+			console.log("INSERT_COOKIE_STRING= "+document.cookie);
 		}
 
 }
@@ -82,11 +84,12 @@ function f() {
 	}
 	content = content.trim();
 	if (content.length > 0){
-		console.log(cookie_nb);
+		console.log("f_COOKIE_NB = "+cookie_nb);
 		var todo = create_todo(cookie_nb, content);
 		insert_todo(todo);
 		cookie_nb++;
 		document.cookie = "cookie_nb="+cookie_nb;
+		console.log("F__COOKIE_STRING= "+document.cookie);
 	}
 }
 
