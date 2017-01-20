@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			#main {
+				height:200px;
+				width:200px;
+				background-color:red;
+				border-radius:50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id ="main"></div>
+		<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+		<script>
+
+
+		$('#main').click(function() {
+			size  = $(this).width();
+			if (size > 420) {
+				$(this).css('width', '200px');
+				$(this).css('height', '200px');
+			}
+			else {
+				if ($(this).css('background-color') == "rgb(255, 0, 0)" || !$(this).css('background-color')) {
+					$(this).css('background-color', 'green');
+				}
+				else if ($(this).css('background-color') == "rgb(0, 128, 0)") {
+					$(this).css('background-color', 'blue');
+				}
+				else
+					$(this).css('background-color', 'red');
+				$(this).css('width', (size + 10) + 'px');
+				$(this).css('height', (size + 10) + 'px');
+			}
+		});
+
+		$('#main').mouseout( function() {
+			var size = $(this).width();
+			console.log($(this).css('background-color'));
+			if ($(this).css('background-color') == 'rgb(255, 0, 0)' || !$(this).css('background-color')) {
+				$(this).css('background-color', 'blue');
+			}
+			else if ($(this).css('background-color') == 'rgb(0, 0, 255)') {
+				$(this).css('background-color','green');
+			}
+			else
+				$(this).css('background-color','red');
+			if (size > 200) {
+				$(this).css('width', (size - 5) + 'px');
+				$(this).css('height', (size - 5) + 'px');
+			}
+		});
+
+		</script>
+	</body>
+</html>
