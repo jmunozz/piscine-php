@@ -1,0 +1,66 @@
+<?php
+
+// Display all error
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Includes functions and constants.
+require_once('../config/constants.php');
+require_once('../config/functions.php');
+
+/*
+** Get sessions infos.
+*/
+session_start();
+$is_admin = isset($_SESSION['is_admin']) && ($_SESSION['is_admin'] == 1);
+$is_logged = isset($_SESSION['login']) && $_SESSION['login'] !== '';
+
+
+if(!$is_admin) {
+	include('./templates/access_denied.html');
+	exit();
+}
+
+/*
+** A new product has just been submitted.
+*/
+if(isset($_POST['add'])) {
+	echo 'ici';
+
+	// Get and format tags for product.
+	$tags = array();
+	$keys = array_keys($_POST);
+	foreach($keys as $key) {
+		if (strpos($key, 'tag_') !== false)
+			array_push($tags, substr($key, 4));
+	}
+	$tags = arrayToString($tags);
+
+	// Add product to DB.
+	$success = addProduct(array(
+		'name' => $_POST['name'],
+		'description' => $_POST['description'],
+		'tags' => $tags, 
+		'price' => $_POST['price'],
+		'picture' => 'default'
+	));
+
+	// Choose what alert to display.
+	if ($success)
+		$alert = 'A new product has been added!';
+	else
+		$alert = 'Impossible to add new product!';
+}
+
+
+$allTags = getAll('tags');
+
+include('../templates/head.html');
+include('../templates/header.php');
+include('../templates/alert.php');
+include('../templates/admin/menu.php');
+include('../templates/admin/add_product.php')
+
+
+?>
