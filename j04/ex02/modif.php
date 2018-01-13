@@ -1,4 +1,9 @@
 <?PHP
+if (!$_POST['login'] || !$_POST['passwd'] || !$_POST['oldpw'])
+{	
+	echo "ERROR\n";
+	return;
+}
 if (file_exists("../private/passwd"))
 	$pwd = unserialize(file_get_contents("../private/passwd"));
 else 

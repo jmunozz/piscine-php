@@ -1,47 +1,82 @@
 <?php
-session_name('ECOM');
+
+//Display all error
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+//Includes functions and constants.
+require_once('./config/constants.php');
+require_once('./config/functions.php');
+
+//Start a session and set up an empty cart if needed.
 session_start();
-require_once('functions/auth_functions.php');
-require_once('functions/sql_functions.php');
-require_once('functions/display_functions.php');
-require_once('functions/user_functions.php');
-require_once('functions/generate_db.php');
+if (!isset($_SESSION['content'])) {
+	$_SESSION['content'] = array();
+}
 
-	if (NULL === ($bdd = sql_connexion()))
-		generate_db();
-	if (!$_SESSION['cart']) {
-	$_SESSION['cart'] = array();
-	}
+//Get session infos
+$is_admin = isset($_SESSION['is_admin']) && ($_SESSION['is_admin'] == 1);
+$is_logged = isset($_SESSION['login']) && $_SESSION['login'] !== '';
 
-	if (!$_SESSION['user_loggued_on'] && isset($_POST['auth']) 
-	&& isset($_POST['login']) && isset($_POST['passwd']))
-	{
-		if (!strcmp($_POST['auth'],'connexion') 
-		&& auth($_POST['login'], $_POST['passwd'], $bdd))
-		{
-			$_SESSION['user_loggued_on'] = $_POST['login'];
-			echo $_SESSION['user_loggued_on'].' est connecte';
+//Get query string filters or actions
+$show_details = isset($_GET['product_id']);
+$tag_filter = isset($_GET['category']);
+$product_added_to_cart = isset($_POST['id']);
+
+//A product has been added to cart. We add it to SESSION.
+if ($product_added_to_cart) {
+	$product_id = $_POST['id'];
+	$product_quantity = $_POST['quantity'];
+	$is_already_in_cart = false;
+	foreach($_SESSION['content'] as &$product) {
+		if ($product['id'] === $product_id) {
+			$is_already_in_cart = true;
+			$product['quantity'] += $product_quantity;
+			break;
 		}
-		else 
-			$_SESSION['user_loggued_on'] = "";
 	}
+	if(!$is_already_in_cart) {
+		array_push($_SESSION['content'], array(
+			'id' => $product_id,
+			'quantity' => $product_quantity
+		));
+	}
+}
 
-	if (isset($_SESSION) && isset($_POST['auth'])
-	&& !strcmp($_POST['auth'], 'deconnexion'))
-	{
-		echo 'on se deconnecte';
-		$_SESSION['user_loggued_on'] = "";
-		drop_cart();
-	}
-	if ($_POST['cart_buy'] || $_POST['cart_modify'])
-		add_to_cart($_POST['cart_id'], $_POST['cart_quantity'], $_POST['cart_price']);
-	if ($_POST['cart_drop'])
-		drop_cart();
+//Display all details about a product.
+if ($show_details) {
+	$product_id = $_GET['product_id'];
+	$product_infos = getOne('products', $product_id);
+}
 
-	if (isset($_SESSION))
-	{
-		include ("functions/init.php");
-		include ("home/homepage.php");
+//Display all product by category.
+else if ($tag_filter) {
+	$final_list = array();
+	$filter = $_GET['category'];
+	$product_list = getAll('products');
+	foreach($product_list as $n) {
+		$tags = explode(SEPARATOR, $n['tags']);
+		if (in_array($filter, $tags)) {
+			array_push($final_list, $n);
+		}
 	}
+	$product_list = $final_list;
+}
+
+//Display all products.
+else
+	$product_list = getAll('products');
+
+//Render page with templates
+include('./templates/head.html');
+include('./templates/header.php');
+include('./templates/alert.php');
+if ($show_details) {
+	include('./templates/single_product.php');
+} else {
+	include('./templates/all_products.php');
+}
+
 
 ?>
